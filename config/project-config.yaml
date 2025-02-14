@@ -1,0 +1,29 @@
+# Configuração do Projeto Geoser-FAD
+project: "Geoser-FAD"
+github_url: "https://github.com/vinicapanema/geoser-fad"
+description: "Ferramenta online para geoprocessos e publicação de web maps, utilizando Geoserver e PostgreSQL com PostGIS, hospedados na Azure (via Neon)."
+
+components:
+  geoserver:
+    version: "2.19.2"        # Versão recomendada do Geoserver
+    port: 8080               # Porta padrão de acesso
+    context: "geoserver"     # Contexto da aplicação
+  database:
+    type: "PostgreSQL"
+    version: "13"            # Versão recomendada do PostgreSQL
+    postgis: true            # Habilitar extensão PostGIS
+    connection:
+      host: "seu-neon-host"   # Substitua pelo host do Neon
+      port: 5432             # Porta padrão do PostgreSQL
+      database: "geoserver_db"
+      user: "db_user"
+      password: "db_password"
+webgis:
+  framework: "OpenLayers"     # Alternativamente, pode ser Leaflet
+  version: "6.x"             # Versão recomendada do framework
+
+dependencies:
+  - "VSCode/Codespaces"
+  - "GitHub CLI"
+  - "Pandoc (para conversão de arquivos)"
+  - "Docker (opcional, se optar por containers para isolar serviços)"
